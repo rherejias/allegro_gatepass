@@ -1,0 +1,359 @@
+
+/*@ver 1.0 avillena css for Add Button applied to all button 1/9/2017*/
+/*@ver 2.0 rherejias css for Add Button applied to all button on the grid 1/17/2017*/
+
+
+#bg-text
+	{
+		display:none;
+		text-align:center!important;
+	}
+@media print {
+ #hidde-print,.page-footer,.topmenu-outer,#print {
+	display: none !important;
+  }
+  #bg-text
+	{
+		/*color:lightgrey;*/
+		display:unset;
+		font-size:40px;
+		color:lightgrey !important;
+		-webkit-print-color-adjust: lightgrey !important; 
+		text-align:center!important;
+
+	}
+  
+
+}
+
+.btn-custom:hover {
+		box-shadow:3px 3px 1px #168572;
+}
+
+label, textarea,#cmbTransType,input[type="text"],input[type="file"]
+{
+  font-size:12px; font-family: segoe ui;
+}
+
+label {
+	font-weight:bold;
+}
+
+/* css for ghost button*/
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 4em auto;
+  font-family: Raleway, Arial, sans-serif;
+  padding: 1em 2em;
+}
+
+
+h1, h2 {
+  margin-bottom: 1em;
+  border-bottom: 2px solid #eee;
+  line-height: 1.5;
+}
+
+h1 > small{
+  color: #666;
+}
+
+h1 > small > a,
+p > a{
+  color: #3CB371;
+  text-decoration: none;
+}
+h1 > small > a:hover,
+p > a:hover{
+  text-decoration: underline;
+}
+
+/* Buttons styles */
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+input[type="submit"].btn,
+button.btn {
+	cursor: pointer;
+}
+
+a.btn,.btn {
+ /*margin-right: 1em;   remove this while use*/
+  /* margin-bottom: 1em; remove this while use*/
+	display: inline-block;
+	outline: none;
+	*zoom: 1;
+	text-align: center;
+	text-decoration: none;
+	font-family: inherit;
+	font-weight: 600;
+
+	letter-spacing: 1px;
+	vertical-align: middle;
+	border: 1px solid;
+	transition: all 0.2s ease;
+	box-sizing: border-box;
+	text-shadow: 0 1px 0 rgba(0,0,0,0.01);
+}
+/* Radius */
+.btn-radius {
+  border-radius: 3px;
+}
+/* Sizes */
+.btn-small {
+	font-size: 0.8125em;
+	padding: 0.4125em 1.25em;
+}
+.btn-medium {
+	font-size: 0.9375em;
+	padding: 0.5375em 1.375em;
+}
+.btn-large {
+	font-size: 1.0625em;
+	padding: 0.5625em 1.5em;
+}
+
+/* Colors */
+.btn-green {
+	color: #3CB371;
+	border-color: #3CB371;
+}
+.btn-green:hover {
+  background: #3CB371;
+  color: #fff;
+  border-color: #3CB371;		
+}
+
+.btn-blue {
+	color: #4682B4;
+	border-color: #4682B4;
+}
+.btn-blue:hover {
+  background: #4682B4;
+  color: #fff;
+  border-color: #4682B4;		
+}
+
+.btn-orange {
+	color: #FF8C00;
+	border-color: #FF8C00;
+}
+.btn-orange:hover {
+  background: #FF8C00;
+  color: #fff;
+  border-color: #FF8C00;		
+}
+
+.btn-red {
+	color: #B22222;
+	border-color: #B22222;
+}
+.btn-red:hover {
+  background: #B22222;
+  color: #fff;
+  border-color: #B22222;	
+}
+
+.btn-gray {
+	color: #808080;
+	border-color: #808080;
+}
+.btn-gray:hover {
+  background: #808080;
+  color: #fff;
+  border-color: #808080;	
+}
+/*end*/
+
+
+
+
+/* desc : The snackbar - position it at the bottom and in the middle of the screen */
+/* by : avillena@allegromciro.com */
+/* date : january 18, 2017 */ 
+#snackbar{
+	visibility: hidden; /* Hidden by default. Visible on click */
+	max-width: 330px; /* added max width to avoid having long toast*/
+	background-color: green; /* Black background color 00ff00 */
+	color: #fff; /* White text color */
+	text-align: center; /* Centered text */
+	border-radius: 2px; /* Rounded borders */
+	padding: 16px; /* Padding */
+	position: fixed; /* Sit on top of the screen */
+	z-index: 100000; /* Add a z-index if needed */
+	left: 45%; /* Center the snackbar */
+	top: 2%; /* 30px from the bottom */
+	box-shadow: 5px 5px 7px grey;
+}
+
+
+#snackbarCreateNotif, #snackbarDraftNotif{
+	visibility: hidden; /* Hidden by default. Visible on click */
+	max-width: 330px; /* added max width to avoid having long toast*/
+	background-color: green; /* Black background color */
+	color: #fff; /* White text color */
+	text-align: center; /* Centered text */
+	border-radius: 2px; /* Rounded borders */
+	padding: 16px; /* Padding */
+	position: fixed; /* Sit on top of the screen */
+	z-index: 100000; /* Add a z-index if needed */
+	left: 45%; /* Center the snackbar */
+	top: 2%; /* 30px from the bottom */
+	box-shadow: 5px 5px 7px grey;
+}
+
+.warning, .fail, .returndateWarning{
+	visibility: hidden; /* Hidden by default. Visible on click */
+	/*ver 1.0 author rherejias 1/27/2017 removeed mind width and margin left to fix toast
+		modified left and top to place it on center top*/
+	max-width: 350px; /* added max width to avoid having long toast*/
+	background-color: #F25656; /* Black background color */
+	color: #fff; /* White text color */
+	text-align: center; /* Centered text */
+	border-radius: 2px; /* Rounded borders */
+	padding: 16px; /* Padding */
+	position: fixed; /* Sit on top of the screen */
+	z-index: 100000; /* Add a z-index if needed */
+	left: 45%; /* Center the snackbar */
+	top: 2%; /* 30px from the bottom */
+	box-shadow: 5px 5px 7px grey;
+} 
+
+.save, .maintenance{
+	visibility: hidden; /* Hidden by default. Visible on click */
+	 max-width: 330px; /* added max width to avoid having long toast*/
+	background-color: green; /* Black background color */
+	color: #fff; /* White text color */
+	text-align: center; /* Centered text */
+	border-radius: 2px; /* Rounded borders */
+	padding: 16px; /* Padding */
+	position: fixed; /* Sit on top of the screen */
+	z-index: 100000; /* Add a z-index if needed */
+	left: 45%; /* Center the snackbar */
+	top: 2%; /* 30px from the bottom */
+	box-shadow: 5px 5px 7px grey;
+}
+
+/* Draft Toas Notification with class*/
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+	visibility: visible; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+However, delay the fade out process for 2.5 seconds */
+	-webkit-animation: fadein 4s, fadeout 0.5s 2.5s;
+	animation: fadein 4s, fadeout 0.5s 2.5s;
+}
+
+
+#snackbarCreateNotif.show {
+	visibility: visible; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+However, delay the fade out process for 2.5 seconds */
+	-webkit-animation: fadein 4s, fadeout 0.5s 3.5s;
+	animation: fadein 4s, fadeout 0.5s 3.5s;
+}
+
+#snackbarDraftNotif.show {
+	visibility: visible; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+However, delay the fade out process for 2.5 seconds */
+	-webkit-animation: fadein 4s, fadeout 0.5s 3.5s;
+	animation: fadein 4s, fadeout 0.5s 3.5s;
+}
+
+
+
+.warning.show {
+	visibility: visible; /* Show the snackbar */
+	/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+	However, delay the fade out process for 2.5 seconds */
+	-webkit-animation: fadein 4s, fadeout 0.5s 3.5s;
+	animation: fadein 4s, fadeout 0.5s 3.5s;
+}
+
+.save.show {
+	visibility: visible; /* Show the snackbar */
+	/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+	However, delay the fade out process for 2.5 seconds */
+	-webkit-animation: fadein 4s, fadeout 0.5s 3.5s;
+	animation: fadein 4s, fadeout 0.5s 3.5s;
+}
+
+.maintenance.show {
+	visibility: visible; /* Show the snackbar */
+	/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+	However, delay the fade out process for 2.5 seconds */
+	-webkit-animation: fadein 4s, fadeout 0.5s 3.5s;
+	animation: fadein 4s, fadeout 0.5s 3.5s;
+}
+
+.fail.show {
+	visibility: visible; /* Show the snackbar */
+	/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+	However, delay the fade out process for 2.5 seconds */
+	-webkit-animation: fadein 4s, fadeout 0.5s 3.5s;
+	animation: fadein 4s, fadeout 0.5s 3.5s;
+}
+
+.returndateWarning.show {
+	 visibility: visible; /* Show the snackbar */
+	/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+	However, delay the fade out process for 2.5 seconds */
+	-webkit-animation: fadein 4s, fadeout 0.5s 3.5s;
+	animation: fadein 4s, fadeout 0.5s 3.5s;
+
+}
+
+
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+	from {right: 0; opacity: 0;} 
+	to {right: 10%; opacity: 1;}
+}
+
+@keyframes fadein {
+	from {right: 0; opacity: 0;}
+	to {right: 10%; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+	from {right: 10%; opacity: 1;} 
+	to {right: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+	from {right: 10%; opacity: 1;}
+	to {right: 0; opacity: 0;}
+}
+
+.textstyle {
+	background-color: transparent;
+	outline: none;
+	outline-style: none;
+	outline-offset: 0;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 3px 10px;
+}
+
+

@@ -1,0 +1,305 @@
+﻿@{
+    Layout = "~/Views/Shared/template/_Layout.cshtml";
+}
+
+@section content {
+
+
+@* @version: 1.0, author: avillena, description: hidden parameter percentage of user gate pass *@
+<input id="totalsubmitted" hidden value="@ViewBag.SubmittedPercentage" />
+<input id="totalapproved" hidden value="@ViewBag.ApprovedPercentage" />
+<input id="totalrejected" hidden value="@ViewBag.RejectedPercentage" />
+<input id="totaldrafted" hidden value="@ViewBag.DraftedPercentage" />
+<input id="userlogin" hidden value="@ViewBag.loginuser" />
+
+
+@* @version: 1.0, author: avillena, description: hidden parameter percentage of approver dashboard progress bar *@
+<input id="percentpending" hidden value="@ViewBag.totalcountpendingfoapprovalpercentage" />
+<input id="percentapproved" hidden value="@ViewBag.ApprovedbyApproverpercentage" />
+<input id="percentrejected" hidden value="@ViewBag.RejectedbyApproverpercentage" />
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+@* @version: 1.0, author: avillena, description: Gate pass title into landing page *@
+@*<div class="panel panel-white">
+    <div class="panel-heading">
+
+    </div>
+    <div class="panel-body" style="padding-bottom:5%">
+        <p align="center" style="font-size:30px"> WELCOME</p>
+        <br />
+        <br />
+        <br />
+        <p align="center" style="font-size:90px; font-family:Arial; font-weight:bold"><i style="font-family:Brush Script MT; font-weight:100">Online</i> Gate Pass</p>
+        <br />
+        <br />
+        <p align="center" style="font-size:20px">Allegro MicroSystem Philippines Inc.</p>
+        <br />
+    </div>
+</div>*@
+
+
+<img class="img-responsive" src="~/Content/template/gatepass dashboard.png" alt="Online Gate Pass"/>
+    <br />
+
+@* @version: 1.0, author: avillena, description: mini dashboard of user *@
+   <div class="row" id="dashuser" hidden>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel info-box panel-white">
+                    <div class="panel-body">
+                        <div class="info-box-stats">
+                            <p class="counter">@ViewBag.Submitted</p>
+                            <span class="info-box-title">Pending</span>
+                        </div>
+                        <div class="info-box-icon">
+                            <i class="glyphicon glyphicon-envelope" style="color:#0F95AD"></i>
+                        </div>
+                        <div class="info-box-progress">
+                            <div class="progress progress-xs progress-squared bs-n">
+                                <div class="progress-bar progress-bar-info" id="jqxProgressBarSubmitted">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel info-box panel-white">
+                    <div class="panel-body">
+                        <div class="info-box-stats">
+                            <p class="counter">@ViewBag.Approved</p>
+                            <span class="info-box-title">Approved</span>
+                        </div>
+                        <div class="info-box-icon">
+                            <i class="glyphicon glyphicon-ok" style="color:#22BAA0"></i>
+                        </div>
+                        <div class="info-box-progress">
+                            <div class="progress progress-xs progress-squared bs-n">
+                                <div class="progress-bar progress-bar-success" id="approved">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel info-box panel-white">
+                    <div class="panel-body">
+                        <div class="info-box-stats">
+                            <p class="counter">@ViewBag.Rejected</p>
+                            <span class="info-box-title">Rejected</span>
+                        </div>
+                        <div class="info-box-icon">
+                            <i class="glyphicon glyphicon-remove" style="color:#F25656"></i>
+                        </div>
+                        <div class="info-box-progress">
+                            <div class="progress progress-xs progress-squared bs-n">
+                                <div class="progress-bar progress-bar-danger" id="rejected">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel info-box panel-white">
+                    <div class="panel-body">
+                        <div class="info-box-stats">
+                            <p class="counter">@ViewBag.Drafted</p>
+                            <span class="info-box-title">Drafted</span>
+                        </div>
+                        <div class="info-box-icon">
+                            <i class="glyphicon glyphicon-folder-open" style="color:#F6D433"></i>
+                        </div>
+                        <div class="info-box-progress">
+                            <div class="progress progress-xs progress-squared bs-n">
+                                <div class="progress-bar progress-bar-warning" id="drafted" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+   </div>
+
+
+@* @version: 1.0, author: avillena, description: mini dashboard of guard *@
+<div class="row" id="dashguard" hidden>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel info-box panel-white">
+            <div class="panel-body">
+                <div class="info-box-stats">
+                    <p class="counter">@ViewBag.ForApprovalGuard</p>
+                    <span class="info-box-title">For Approval</span>
+                </div>
+                <div class="info-box-icon">
+                    <i class="glyphicon glyphicon-envelope" style="color:#0F95AD"></i>
+                </div>
+                <div class="info-box-progress">
+                    <div class="progress progress-xs progress-squared bs-n">
+                        <div class="progress-bar progress-bar-info" id="guardjqxProgressBarSubmitted">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel info-box panel-white">
+            <div class="panel-body">
+                <div class="info-box-stats">
+                    <p class="counter">@ViewBag.ApprovedGuard</p>
+                    <span class="info-box-title">Approved</span>
+                </div>
+                <div class="info-box-icon">
+                    <i class="glyphicon glyphicon-ok" style="color:#22BAA0"></i>
+                </div>
+                <div class="info-box-progress">
+                    <div class="progress progress-xs progress-squared bs-n">
+                        <div class="progress-bar progress-bar-success" id="guardapproved">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel info-box panel-white">
+            <div class="panel-body">
+                <div class="info-box-stats">
+                    <p class="counter">@ViewBag.RejectedGuard</p>
+                    <span class="info-box-title">Rejected</span>
+                </div>
+                <div class="info-box-icon">
+                    <i class="glyphicon glyphicon-remove" style="color:#F25656"></i>
+                </div>
+                <div class="info-box-progress">
+                    <div class="progress progress-xs progress-squared bs-n">
+                        <div class="progress-bar progress-bar-danger" id="guardrejected">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel info-box panel-white">
+            <div class="panel-body">
+                <div class="info-box-stats">
+                    <p class="counter">@ViewBag.ReturnSlipGuard</p>
+                    <span class="info-box-title">Return Slip</span>
+                </div>
+                <div class="info-box-icon">
+                    <i class="glyphicon glyphicon-folder-open" style="color:#F6D433"></i>
+                </div>
+                <div class="info-box-progress">
+                    <div class="progress progress-xs progress-squared bs-n">
+                        <div class="progress-bar progress-bar-warning" id="guarddrafted">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@* @version: 1.0, author: avillena, description: mini dashboard of guard *@
+<div class="row" id="dashapprover" hidden>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel info-box panel-white">
+            <div class="panel-body">
+                <div class="info-box-stats">
+                    <p class="counter">@ViewBag.totalcountpendingfoapproval</p>
+                    <span class="info-box-title">For Approval</span>
+                </div>
+                <div class="info-box-icon">
+                    <i class="glyphicon glyphicon-envelope" style="color:#0F95AD"></i>
+                </div>
+                <div class="info-box-progress">
+                    <div class="progress progress-xs progress-squared bs-n">
+                        <div class="progress-bar progress-bar-info" id="approverpending">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel info-box panel-white">
+            <div class="panel-body">
+                <div class="info-box-stats">
+                    <p class="counter">@ViewBag.ApprovedbyApprover</p>
+                    <span class="info-box-title">Approved</span>
+                </div>
+                <div class="info-box-icon">
+                    <i class="glyphicon glyphicon-ok" style="color:#22BAA0"></i>
+                </div>
+                <div class="info-box-progress">
+                    <div class="progress progress-xs progress-squared bs-n">
+                        <div class="progress-bar progress-bar-success" id="approverapproved">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel info-box panel-white">
+            <div class="panel-body">
+                <div class="info-box-stats">
+                    <p class="counter">@ViewBag.RejectedbyApprover</p>
+                    <span class="info-box-title">Rejected</span>
+                </div>
+                <div class="info-box-icon">
+                    <i class="glyphicon glyphicon-remove" style="color:#F25656"></i>
+                </div>
+                <div class="info-box-progress">
+                    <div class="progress progress-xs progress-squared bs-n">
+                        <div class="progress-bar progress-bar-danger" id="approverrejected">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel info-box panel-white">
+            <div class="panel-body">
+                <div class="info-box-stats">
+                    <p class="counter">@ViewBag.ApproverTransaction</p>
+                    <span class="info-box-title">Overall Transactions</span>
+                </div>
+                <div class="info-box-icon">
+                    <i class="glyphicon glyphicon-folder-open" style="color:#F6D433"></i>
+                </div>
+                <div class="info-box-progress">
+                    <div class="progress progress-xs progress-squared bs-n">
+                        <div class="progress-bar progress-bar-warning" id="approveroverall">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+ 
+}
+@section JavaScript
+{
+    <script src="~/Scripts/pages/home.js"></script>
+}

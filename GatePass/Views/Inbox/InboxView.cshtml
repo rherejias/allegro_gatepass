@@ -1,0 +1,241 @@
+﻿
+@{
+  
+    Layout = "~/Views/Shared/template/_Layout.cshtml";
+}
+@section content{
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="panel panel-white">
+            <div class="panel-body">
+                <div class="panel panel-info">
+                    <div class="panel-heading" style="padding-top: 20px; overflow: hidden;">
+                        <h3 class="panel-title" id="titleView"><i class="fa fa-inbox" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Inbox</strong></i>
+                           <label id="txtGatePassIDLabel" hidden>Gate Pass ID&nbsp;&nbsp; : </label>&nbsp;&nbsp;<label id="txtGatePassID" style="font-weight:bold"></label>
+                        </h3>
+                        <a class="btn btn-medium btn-green btn-custom" id="cmdInboxBack" title="Back" aria-hidden="true" style="float:right;position:relative;display:none;padding: 0.1500em 1.00em; color:white;">
+                            <i class="fa fa-long-arrow-left fa-lg"></i>
+                        </a>
+
+                    </div>
+
+                    <div class="panel-body" style="border-style:solid;border-width:1px;border-color:black; border-color:#12AFCB">
+                        <br />
+                        <div class="row" id="bodyTransDrafts">
+                            <div class="col-md-12">
+                                <div class="jqxgrid jqxgrid-filterable jqxgrid-sortable jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-toolbar"
+                                     id="gridInbox"
+                                     grid-width="100"
+                                     data-url="/Inbox/GetWithIncompleteTrans"
+                                     grid-selection-mode="singlerow"
+                                     grid-pagesizeoptions="5,10,20,50,100"
+                                     data-action-buttons="Edit"
+                                     grid-hide-columns="0,2,5,7,8"
+                                     grid-pagermode="simple">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12" id="bodyDraftsDetails" style="display:none">
+
+                            <div class="row">
+
+                                @*<div class="col-md-8">
+
+                                    <div class="row">
+                                        <div class="form-group col-md-3">
+                                            <label for="txtGatePassID">Gate Pass ID*:</label>
+                                            <input type="text" class="form-control" id="txtGatePassID" placeholder="System Generated" readonly="readonly">
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="txtImpexRefNbr">IMPEX Ref. Number*:</label>
+                                            <input type="text" class="form-control" id="txtImpexRefNbr" placeholder="IMPEX Ref. Number">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="cmdSupplier">Supplier:</label>
+                                            <div type="text" class="form-control dropdownlist" id="cmdSupplier" placeholder="Select Supplier" data-url="/Transactions/GetSupplierCombo" data-display="supplier_string" data-value="code_string"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label for="cmbTransType">Transaction Type*:</label>
+                                            <select id="cmbTransType" class="form-control">
+                                                <option value="IN">IN</option>
+                                                <option value="OUT">OUT</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label for="txtReturnDate">Return Date*:</label>
+                                            <div class="input-group input-append date form_datetime">
+                                                <input id="txtReturnDate" type="text" class="form-control" style="background-color:transparent" readonly />
+
+                                                <span class="input-group-addon add-on">
+                                                    <i class="fa fa-calendar faa-tada animated-hover"
+                                                       style="color: #31B0D5">
+                                                    </i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="txtPurpose">Purpose:<span class="asterisc" style="color:red;font-size:12px">*</span></label>
+
+                                            <input type="text" class="form-control" id="txtPurpose" placeholder="Purpose">
+                                        </div>
+                                    </div>
+
+                                </div>*@
+
+
+
+                                <div class="col-md-6">
+                                    <div class="row">
+
+                                        <div class="form-group col-md-4">
+                                            <label for="txtGatePassID">Department Approver:<span class="asterisc" style="color:red;font-size:12px">*</span></label>
+                                            <input type="text" class="form-control" readonly="readonly" value="@ViewBag.deptapprover">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="txtImpexRefNbr">IMPEX Ref. Number:</label>
+                                            <input type="text" class="form-control" id="txtImpexRefNbr" placeholder="IMPEX Ref. Number">
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label for="cmbTransType">Transaction Type:<span class="asterisc" style="color:red;font-size:12px">*</span></label>
+                                            <select id="cmbTransType" class="form-control">
+                                                <option value="IN">IN</option>
+                                                <option value="OUT">OUT</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="txtReturnDate">Return Date:<span class="asterisc" style="color:red;font-size:12px">*</span></label>
+                                            <div class="input-group input-append date form_datetime">
+                                                <input id="txtReturnDate" type="text" class="form-control" style="background-color:transparent" readonly />
+                                                <span class="input-group-addon add-on" style="border-radius: 0px">
+                                                    <i class="fa fa-calendar faa-tada animated-hover"
+                                                       style="color: #31B0D5">
+                                                    </i>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-8">
+                                            <label for="txtPurpose">Purpose:<span class="asterisc" style="color:red;font-size:12px">*</span></label>
+                                            <input type="text" class="form-control" id="txtPurpose" placeholder="Purpose">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="form-group col-md-12">
+                                                <label for="cmdSupplier">Supplier:<span class="asterisc" style="color:red;font-size:12px">*</span></label>
+                                                <div type="text" class="form-control" id="cmbSupplier" placeholder="Select Supplier" data-display="supplier_string" data-value="code_string"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-md-12">
+                                                <label for="txtReturnDate">Contact Person:</label>
+                                                <div class="input-group" style="float:right">
+                                                    <div type="text" class="form-control" id="cmbContactPerson" placeholder="Select Contacts" data-display="supplier_string" data-value="code_string"></div>
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default" type="button" id="cmdAddContact" style="width:120%; border-color:#DCE1E4; background-color:#EEEEEE"><i class="fa fa-plus faa-tada animated-hover" style="color: #31B0D5" id="addContactIcon"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-3">
+                                    <div class="col-md-12">
+                                        <label for="cmbTransType">Upload File:</label>
+                                        <div class="list-group">
+                                            <a class="list-group-item">
+                                                <input type="file" id="headerAttachment" name="headerAttachment" style="color:#F25656; font-size:1.1em;" />
+                                            </a>
+                                            <label id="lblcurrentFile" for="currentFile" style="margin-top:1%" hidden="hidden">Attached File:</label>
+                                            <a class="list-group-item" id="file" href="" download title="Download">
+                                                <label id="currentFile" class="text-success" style="cursor:pointer; font-weight:bold;" hidden="hidden"></label>
+                                                <i class="fa fa-times-circle" id="removeAttachment" title="Remove" style="display:none; cursor:pointer; color:red" aria-hidden="true"></i>
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <hr />
+                            @*<div class="row">
+                                <div class="col-md-12"><button id="cmdAddItem" class="btn btn-warning" style="float:right; margin-bottom:1%"><i class="fa fa-plus" aria-hidden="true"></i> Add Item</button></div>
+                            </div>*@
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <div id="detailsContainer">
+                                        <div class="jqxgrid jqxgrid-filterable jqxgrid-sortable jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-custom"
+                                             id="gridDetails"
+                                             grid-width="100"
+                                             data-url="/Inbox/GetItemDetails_Inbox"
+                                             grid-selection-mode="singlerow"
+                                             grid-pagesizeoptions="5,10,20,50,100"
+                                             @*data-action-buttons="Details"*@
+                                             grid-rowsheight="60"
+                                             grid-hide-columns="0,1,2,3,4,6,10,15,16">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" style="text-align: right;">
+                                <hr style="border-color:#12AFCB" />
+
+                                <div class="col-md-12">
+                                    @*<button class="btn btn-default" id="cmdInboxBack"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button>*@                                   
+                                    <a id="cmdSaveAndSubmit" class="btn btn-medium btn-green"><i class="fa fa-paper-plane" aria-hidden="true"></i> Submit</a>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+}
+ 
+@section JavaScript {
+
+
+<script src="~/Scripts/pages/inbox/inboxScript.js"></script>
+<script src="~/Scripts/pages/mytransaction/bootstrap-datetimepicker.min.js"></script>
+
+}

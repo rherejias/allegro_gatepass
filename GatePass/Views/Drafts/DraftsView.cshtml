@@ -1,0 +1,198 @@
+﻿
+@{
+
+    Layout = "~/Views/Shared/template/_Layout.cshtml";
+}
+@section content{
+
+
+<div class="row">
+
+    <div class="col-md-12">
+            <div class="panel panel-white">
+                <div class="panel-body">
+                    <div class="panel panel-info">
+                        <div class="panel-heading" style="padding-top: 20px; overflow: hidden;">
+                            <h3 class="panel-title" id="titleView"><i class="fa fa-pencil" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Drafts</strong></i></h3>
+                             <a class="btn btn-medium btn-green btn-custom" id="cmdDraftsBack" title="Back" aria-hidden="true" style="float:right;position:relative;display:none;padding: 0.1500em 1.00em;color:white;">
+                                 <i class="fa fa-long-arrow-left fa-lg"></i>
+                             </a>
+                        </div> 
+                        
+                        @* @version: 1.0, author: avillena, description: data grid of user save as draft *@                    
+                        <div class="panel-body" style="border-style:solid;border-width:1px;border-color:black; border-color:#12AFCB">
+                            <br />
+                                <div class="row" id="bodyTransDrafts">
+                                    <div class="col-md-12">
+                                        <div class="jqxgrid jqxgrid-filterable jqxgrid-sortable jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-toolbar"
+                                             id="gridDrafts"
+                                             grid-width="100"
+                                             data-url="/Drafts/GetAllDraftedTrans"
+                                             data-method="post"
+                                             grid-selection-mode="singlerow"
+                                             grid-pagesizeoptions="5,10,20,50,100"
+                                             data-action-buttons="Edit,Remove"
+                                             grid-hide-columns="0,1,2,4,6,8,9,10,12,13"
+                                             grid-pagermode="simple">
+
+                                        </div>
+                                    </div>
+                                </div>
+                          
+                            @* @version: 1.0, author: avillena, description: display the gate pass details and item datails *@
+                            <div class="col-md-12" id="bodyDraftsDetails" style="display:none">               
+                                <div class="row">
+                                   
+
+                                    <div class="col-md-6">
+                                        <div class="row">
+
+                                            <div class="form-group col-md-4">
+                                                <label for="txtGatePassID">Department Approver:<span class="asterisc" style="color:red;font-size:12px">*</span></label>
+                                                <div class="form-control dropdownlistApprover" id="cmbDeptApprover" data-url="/CreateNew/GetDepartmentApprovers" data-display="approver_name_string" data-value="user_code_string"></div>
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="cmbTransType">Transaction Type:<span class="asterisc" style="color:red;font-size:12px">*</span></label>
+                                                <select id="cmbTransType" class="form-control">
+                                                    <option value="IN">IN</option>
+                                                    <option value="OUT">OUT</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <label for="txtReturnDate">Return Date:<span class="asterisc" style="color:red;font-size:12px">*</span></label>
+                                                <div class="input-group input-append date form_datetime">
+                                                    <input id="txtReturnDate" type="text" class="form-control" style="background-color:transparent" readonly />
+                                                    <span class="input-group-addon add-on" style="border-radius: 0px">
+                                                        <i class="fa fa-calendar faa-tada animated-hover"
+                                                           style="color: #31B0D5">
+                                                        </i>
+                                                    </span>
+                                                </div>
+                                            </div>                                       
+                                            
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <label for="txtPurpose">Purpose:<span class="asterisc" style="color:red;font-size:12px">*</span></label>
+                                                <textarea type="text" style="resize:none" rows="1" cols="50" class="form-control" id="txtPurpose" placeholder="Purpose" maxlength="125"></textarea>
+                                            </div>
+                                            
+                                            <div class="form-group col-md-4">
+                                                <label for="txtImpexRefNbr">IMPEX Ref. Number:</label>
+                                                <input type="text" class="form-control" id="txtImpexRefNbr" placeholder="IMPEX Ref. Number" maxlength="25">
+                                            </div>
+
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="cmdSupplier">Supplier:<span class="asterisc" style="color:red;font-size:12px">*</span></label>
+                                                    <div type="text" class="form-control" id="cmbSupplier" placeholder="Select Supplier" data-display="supplier_string" data-value="code_string"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="txtReturnDate">Contact Person:</label>
+                                                    <div class="input-group" style="float:right">
+                                                        <div type="text" class="form-control" id="cmbContactPerson"></div>
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default" type="button" id="cmdAddContact" style="width:120%; border-color:#DCE1E4; background-color:#EEEEEE"><i class="fa fa-plus faa-tada animated-hover" style="color: #31B0D5" id="addContactIcon"></i></button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+       
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                            <label for="cmbTransType">Attach File:</label>
+                                        <label style="float:right; color:red;">Note: 200MB Max File Size</label>
+                                            <div class="list-group">
+                                                <a class="list-group-item">
+                                                    <form>
+                                                        <input type="file" id="headerAttachment" name="headerAttachment" style="color:#F25656; font-size:1.1em;  font-size:12px; font-family: segoe ui;" />
+                                                    </form>
+                                                </a>
+                                                @*<label style="float:right; color:red;">File name can't contain special characters.</label>*@
+                                                <label id="lblcurrentFile" for="currentFile" style="margin-top:1%" hidden="hidden">Uploaded File:</label>
+                                                <i class="fa fa-times-circle" id="removeAttachment" onclick="reset($('#headerAttachment'))" title="Remove" style="cursor:pointer;color:red; float:right; margin-top:7px; " aria-hidden="true"></i>
+                                                <a class="list-group-item" id="file" title="Download" onclick="DownloadAttachment()">
+                                                    <label id="currentFile" class="text-success" style="cursor:pointer; font-weight:bold; font-size:12px; font-family: segoe ui;"></label>
+                                                </a>
+                                            </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12"><a id="cmdAddItem" class="btn btn-medium btn-orange" style="float:right; margin-bottom:1%"><i class="fa fa-plus" aria-hidden="true"></i> Add Item</a></div>
+                                </div>
+
+                                @* @version: 1.0, author: avillena, description: item details into data grid *@
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="detailsContainer">
+                                            <div class="jqxgrid jqxgrid-filterable jqxgrid-sortable jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-custom"
+                                                 id="gridDetails"
+                                                 grid-width="100"
+                                                 data-url="/Transactions/GetTransDetails"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-pagesizeoptions="5,10,20,50,100"
+                                                 data-action-buttons="Edit,Remove"
+                                                 grid-rowsheight="60"
+                                                 grid-hide-columns="0,1,2,3,4,6,10,15,16,19,20"
+                                                 grid-pagermode="simple">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                @* @version: 1.0, author: avillena, description: button for update and submit of drafts record *@
+                                <div class="row" style="text-align: right;">
+                                    <hr style="border-color:#12AFCB" />
+                                    <div class="col-md-12">
+                                        <a id="cmdDraftUpdate" class="btn btn-medium btn-blue"><i class="fa fa-pencil" aria-hidden="true"></i> Update</a>
+                                        <a id="cmdSaveAndSubmit" class="btn btn-medium btn-green"><i class="fa fa-paper-plane" aria-hidden="true"></i> Submit</a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+    </div>
+
+
+</div>
+
+ }
+@section JavaScript {
+
+   
+<script src="~/Scripts/pages/drafts/draftScript.js"></script>
+<script src="~/Scripts/pages/mytransaction/bootstrap-datetimepicker.min.js"></script>
+
+}
+
+

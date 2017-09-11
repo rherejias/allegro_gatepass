@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a2614fba-e830-4eea-8cc5-3838161ce370" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://ampiweb01:8201/EmailNotificationService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EmailNotificationService.xsd" MetadataType="Schema" ID="27eb78c7-de74-401d-a1f7-b8a455f49ce2" SourceId="1" SourceUrl="http://ampiweb01:8201/EmailNotificationService.svc?xsd=xsd2" />
+    <MetadataFile FileName="EmailNotificationService1.xsd" MetadataType="Schema" ID="3747f658-6972-41f4-a010-565c7f947c1a" SourceId="1" SourceUrl="http://ampiweb01:8201/EmailNotificationService.svc?xsd=xsd1" />
+    <MetadataFile FileName="EmailNotificationService2.xsd" MetadataType="Schema" ID="3dda185f-8dc6-4e96-bc22-0f0c02120f88" SourceId="1" SourceUrl="http://ampiweb01:8201/EmailNotificationService.svc?xsd=xsd3" />
+    <MetadataFile FileName="EmailNotificationService.wsdl" MetadataType="Wsdl" ID="04be7a1c-30ef-400d-8f9b-938a825c2270" SourceId="1" SourceUrl="http://ampiweb01:8201/EmailNotificationService.svc?wsdl" />
+    <MetadataFile FileName="EmailNotificationService.disco" MetadataType="Disco" ID="606d6ae0-21ee-4005-8ec9-a67eae9bd7ed" SourceId="1" SourceUrl="http://ampiweb01:8201/EmailNotificationService.svc?disco" />
+    <MetadataFile FileName="EmailNotificationService3.xsd" MetadataType="Schema" ID="ef40a141-b2b9-45c9-8e71-a91d2e7bb5a6" SourceId="1" SourceUrl="http://ampiweb01:8201/EmailNotificationService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

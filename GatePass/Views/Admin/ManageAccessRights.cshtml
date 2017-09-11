@@ -1,0 +1,74 @@
+﻿
+@{
+    Layout = "~/Views/Shared/template/_Layout.cshtml";
+}
+@section content {
+    <div class="row">
+
+
+        @* @version: 1.0, author: abasolo, description: valisation of username to AD server *@
+        <div class="col-md-2">
+            <div class="panel panel-info">
+                <div class="panel-heading clearfix">
+                    <h4 class="panel-title">Add User</h4>
+                </div>
+                <div class="panel-body">
+                    <br />
+                    <form>
+                        <div class="form-group">
+                            <label for="txtUsername">Username</label>
+                            <input type="email" class="form-control" id="txtUsername" placeholder="Enter a Username">
+                           
+                        </div>
+                        <center><a class="btn btn-medium btn-green" id="cmdValidate">Validate</a></center>
+                      
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="panel panel-primary">
+                <div class="panel-heading clearfix">
+                    <h3 class="panel-title">Manage access rights for</h3>
+                </div>
+                <div class="panel-body">
+                    <br />
+                   
+                                    <div class="jqxgrid jqxgrid-filterable jqxgrid-sortable jqxgrid-toolbar jqxgrid-columnsresize jqxgrid-enableellipsis jqxgrid-pageable" 
+                                         grid-selection-mode="singlerow" 
+                                         id="gridUsers" 
+                                         data-method="post"
+                                         data-url="/users/GetRegisteredUsers"
+                                         data-tree-url="/modules/getmodules" 
+                                         grid-hide-columns="0,1,5,8"></div>
+
+                    <div role="tabpanel">
+                        <ul class="nav nav-pills" role="tablist">
+                        </ul>
+                        @* @version: 1.0, author: abasolo, description: data grid of user list *@
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active fade in" id="users">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* @version: 1.0, author: abasolo, description: treeview of modules *@
+        <div class="col-md-3">
+            <div class="panel panel-success">
+                <div class="panel-heading clearfix">
+                    <h4 class="panel-title">Available Modules</h4>
+                </div>
+                <div class="panel-body tree-container">
+                    <div id="treeModules" data-url="/modules/getmodules" data-wtf="hello world"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section JavaScript {
+    <script src="~/Scripts/pages/admin/accessRights.js"></script>
+}

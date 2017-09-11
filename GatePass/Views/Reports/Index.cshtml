@@ -1,0 +1,324 @@
+﻿
+@{
+    Layout = "~/Views/Shared/template/_Layout.cshtml";
+}
+@section content {
+
+
+ <div class="row">
+    <div class="col-md-12">
+        <div role="tabpanel">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#tab1" role="tab" data-toggle="tab">All Records</a></li>
+                <li role="presentation"><a href="#tab2" role="tab" data-toggle="tab">Department</a></li>
+                <li role="presentation"><a href="#tab3" role="tab" data-toggle="tab">IT</a></li>
+                <li role="presentation"><a href="#tab4" role="tab" data-toggle="tab">Purchasing</a></li>
+                <li role="presentation"><a href="#tab5" role="tab" data-toggle="tab">Accounting</a></li>
+                <li role="presentation"><a href="#tab6" role="tab" data-toggle="tab">Override</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="tab1">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="titleView"><i class="fa fa-files-o" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Reports</strong></i></h3>
+                            <label style="float:right">
+                                <select id="cmbStatus" class="form-control input-sm" data-fieldname="status_string" data-grid="ReportsGrid" style="margin-top:-5px;">
+                                    <option disabled selected>Please choose</option>
+                                    <option value="Submitted">Submitted</option>
+                                    <option value="Approved">Approved</option>
+                                    <option value="Rejected">Rejected</option>
+                                </select>
+                            </label>
+
+                            <label style="float:right;">Filter By: &nbsp;&nbsp; </label>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12" id="mainGridContainer">
+                                    <br />
+                                    <div class="jqxgrid jqxgrid-autoheight jqxgrid-sortable jqxgrid-filterable jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                         id="ReportsGrid"
+                                         grid-width="100"
+                                         data-url="/Reports/GetReports"
+                                         data-method="post"
+                                         grid-selection-mode="singlerow"
+                                         grid-pagesizeoptions="10,50,100"
+                                         data-statusbar-buttons="Export to Excel,Clear Filter"
+                                         grid-pagermode="simple">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="tab2">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="titleView"><i class="fa fa-building" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Department</strong></i></h3>
+                        </div>
+                        <div class="panel-body">
+                            <br />
+                            <div role="tabpanel">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#tabDept" role="tab" data-toggle="tab">Approved</a></li>
+                                    <li role="presentation"><a href="#tabDeptReject" role="tab" data-toggle="tab">Reject</a></li>
+                                </ul>
+                            </div>
+                            <div class="tab-content" style="padding:0;">
+                                <div role="tabpanel" class="tab-pane active fade in" id="tabDept">
+                                    <div class="row">
+                                        <div class="col-md-12" id="mainGridContainer">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-sortable jqxgrid-filterable jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions  jqxgrid-toolbar jqxgrid-showstatusbar jqxgrid-columnsresize"
+                                                 id="DeptReport"
+                                                 grid-width="100"
+                                                 data-url="/Reports/GetDeptReports?view=vwReportDeptApproved"
+                                                 data-method="post"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-pagesizeoptions="10,50,100"
+                                                 data-statusbar-buttons="Export to Excel"
+                                                 grid-pagermode="simple">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade in" id="tabDeptReject">
+                                    <div class="row">
+                                        <div class="col-md-12" id="mainGridContainer">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-sortable jqxgrid-filterable jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions  jqxgrid-toolbar jqxgrid-showstatusbar jqxgrid-columnsresize"
+                                                 id="DeptReportReject"
+                                                 grid-width="100"
+                                                 data-url="/Reports/GetDeptReports?view=vwRejectedByDeptHead"
+                                                 data-method="post"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-pagesizeoptions="10,50,100"
+                                                 data-statusbar-buttons="Export to Excel"
+                                                 grid-pagermode="simple">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="tab3">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="titleView"><i class="fa fa-laptop" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> IT</strong></i></h3>
+                        </div>
+                        <div class="panel-body">
+                            <br />
+                            <div role="tabpanel">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#tabIT" role="tab" data-toggle="tab">Approved</a></li>
+                                    <li role="presentation"><a href="#tabITReject" role="tab" data-toggle="tab">Reject</a></li>
+                                </ul>
+                            </div>
+                            <div class="tab-content" style="padding:0;">
+                                <div role="tabpanel" class="tab-pane active fade in" id="tabIT">
+                                    <div class="row">
+                                        <div class="col-md-12" id="mainGridContainer">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-sortable jqxgrid-filterable jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions  jqxgrid-toolbar jqxgrid-showstatusbar jqxgrid-columnsresize"
+                                                 id="ITReport"
+                                                 grid-width="100"
+                                                 data-url="/Reports/GetITReports?IsApproved=1&view=vwReportITApproved"
+                                                 data-method="post"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-pagesizeoptions="10,50,100"
+                                                 data-statusbar-buttons="Export to Excel"
+                                                 grid-pagermode="simple">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade in" id="tabITReject">
+                                    <div class="row">
+                                        <div class="col-md-12" id="mainGridContainer">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-sortable jqxgrid-filterable jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions  jqxgrid-toolbar jqxgrid-showstatusbar jqxgrid-columnsresize"
+                                                 id="ITReportReject"
+                                                 grid-width="100"
+                                                 data-url="/Reports/GetITReports?IsApproved=0&view=vwReportITReject"
+                                                 data-method="post"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-pagesizeoptions="10,50,100"
+                                                 data-statusbar-buttons="Export to Excel"
+                                                 grid-pagermode="simple">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="tab4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="titleView"><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Purchasing</strong></i></h3>
+                        </div>
+                        <div class="panel-body">
+                            <br />
+                            <div role="tabpanel">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#tabPurch" role="tab" data-toggle="tab">Approved</a></li>
+                                    <li role="presentation"><a href="#tabPurchReject" role="tab" data-toggle="tab">Reject</a></li>
+                                </ul>
+                            </div>
+                            <div class="tab-content" style="padding:0;">
+                                <div role="tabpanel" class="tab-pane active fade in" id="tabPurch">
+                                    <div class="row">
+                                        <div class="col-md-12" id="mainGridContainer">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-sortable jqxgrid-filterable jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions  jqxgrid-toolbar jqxgrid-showstatusbar jqxgrid-columnsresize"
+                                                 id="PurchReport"
+                                                 grid-width="100"
+                                                 data-url="/Reports/GetPurchReports?IsApproved=1&view=vwReportPurch"
+                                                 data-method="post"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-pagesizeoptions="10,50,100"
+                                                 data-statusbar-buttons="Export to Excel"
+                                                 grid-pagermode="simple">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade in" id="tabPurchReject">
+                                    <div class="row">
+                                        <div class="col-md-12" id="mainGridContainer">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-sortable jqxgrid-filterable jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions  jqxgrid-toolbar jqxgrid-showstatusbar jqxgrid-columnsresize"
+                                                 id="PurchReportReject"
+                                                 grid-width="100"
+                                                 data-url="/Reports/GetPurchReports?IsApproved=0&view=vwReportPurchReject"
+                                                 data-method="post"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-pagesizeoptions="10,50,100"
+                                                 data-statusbar-buttons="Export to Excel"
+                                                 grid-pagermode="simple">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="tab5">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="titleView"><i class="fa fa-calculator" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Accounting</strong></i></h3>
+                        </div>
+                        <div class="panel-body">
+                            <br />
+                            <div role="tabpanel">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#tabAcct" role="tab" data-toggle="tab">Approved</a></li>
+                                    <li role="presentation"><a href="#tabAcctReject" role="tab" data-toggle="tab">Reject</a></li>
+                                </ul>
+                            </div>
+                            <div class="tab-content" style="padding:0;">
+                                <div role="tabpanel" class="tab-pane active fade in" id="tabAcct">
+                                    <div class="row">
+                                        <div class="col-md-12" id="mainGridContainer">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-sortable jqxgrid-filterable jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions  jqxgrid-toolbar jqxgrid-showstatusbar jqxgrid-columnsresize"
+                                                 id="AcctReport"
+                                                 grid-width="100"
+                                                 data-url="/Reports/GetAccountingReports?IsApproved=1&view=vwReportAcct"
+                                                 data-method="post"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-pagesizeoptions="10,50,100"
+                                                 data-statusbar-buttons="Export to Excel"
+                                                 grid-pagermode="simple">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade in" id="tabAcctReject">
+                                    <div class="row">
+                                        <div class="col-md-12" id="mainGridContainer">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-sortable jqxgrid-filterable jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions  jqxgrid-toolbar jqxgrid-showstatusbar jqxgrid-columnsresize"
+                                                 id="AcctReportReject"
+                                                 grid-width="100"
+                                                 data-url="/Reports/GetAccountingReports?IsApproved=0&view=vwReportAcctReject"
+                                                 data-method="post"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-pagesizeoptions="10,50,100"
+                                                 data-statusbar-buttons="Export to Excel"
+                                                 grid-pagermode="simple">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="tab6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="titleView"><i class="fa fa-check" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Override</strong></i></h3>
+                        </div>
+                        <div class="panel-body">
+                            <br />
+                            <div role="tabpanel">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#tabOverride" role="tab" data-toggle="tab">Approved</a></li>
+                                    <li role="presentation"><a href="#tabOverrideReject" role="tab" data-toggle="tab">Reject</a></li>
+                                </ul>
+                            </div>
+                            <div class="tab-content" style="padding:0;">
+                                <div role="tabpanel" class="tab-pane active fade in" id="tabOverride">
+                                    <div class="row">
+                                        <div class="col-md-12" id="mainGridContainer">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-sortable jqxgrid-filterable jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions  jqxgrid-toolbar jqxgrid-showstatusbar jqxgrid-columnsresize"
+                                                 id="OverrideReport"
+                                                 grid-width="100"
+                                                 data-url="/Reports/GetOverrideReports?IsApproved=1&view=vwReportOverrideApprove"
+                                                 data-method="post"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-pagesizeoptions="10,50,100"
+                                                 grid-hide-columns="0,5"
+                                                 data-statusbar-buttons="Export to Excel"
+                                                 grid-pagermode="simple">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade in" id="tabOverrideReject">
+                                    <div class="row">
+                                        <div class="col-md-12" id="mainGridContainer">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-sortable jqxgrid-filterable jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions  jqxgrid-toolbar jqxgrid-showstatusbar jqxgrid-columnsresize"
+                                                 id="OverrideReportReject"
+                                                 grid-width="100"
+                                                 data-url="/Reports/GetOverrideRejectReports?IsApproved=0&view=vwReportOverrideReject"
+                                                 data-method="post"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-pagesizeoptions="10,50,100"
+                                                 grid-hide-columns="0,5"
+                                                 data-statusbar-buttons="Export to Excel"
+                                                 grid-pagermode="simple">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+    </div>
+</div>
+}
+@section JavaScript {
+<script src="~/Scripts/pages/Reports.js"></script>
+}

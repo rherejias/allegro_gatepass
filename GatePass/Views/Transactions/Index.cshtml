@@ -1,0 +1,321 @@
+﻿
+@{
+    Layout = "~/Views/Shared/template/_Layout.cshtml";
+
+}
+
+@section content {
+
+
+
+<div class="panel panel-info">
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default" id="mytransactionpage">
+                    <div class="panel-heading"><h3 class="panel-title" id="titleView"><i class="fa fa-file" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> My Transactions</strong></i></h3></div>
+                    <div class="panel-body" style="border-style:solid;border-width:1px;border-color:black; border-color:#12AFCB">
+                        <br />
+                        @* @version: 1.0, author: avillena, description: tab view of gate pass transaction and return slip *@
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#tab5" role="tab" data-toggle="tab">Gate Pass Transactions</a></li>
+                            <li role="presentation"><a href="#tab6" role="tab" data-toggle="tab">Return Slip Transactions</a></li>
+                        </ul>
+
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active fade in" id="tab5">
+
+                                <div class="row" id="bodyViewTrans">
+                                    <div id="frm" class="form-inline">
+
+                                        <div class="input-group">
+                                            <label class="radio">
+                                                <input class="radio" type="radio" name="optionsRadios" id="optionmytrans" value="option1" checked>
+                                                My Transaction
+                                            </label>
+                                            |
+                                            <label class="radio">
+                                                <input class="radio" type="radio" name="optionsRadios" id="optionmydept" value="option1">
+                                                My Department
+                                            </label>
+                                        </div>
+
+                                            @* @version: 1.0, author: avillena, description: Vdropdown list of gate pass status pending, approved and rejected *@
+                                            <label style="float:right" id="dropdownMyTrans">
+                                                Status :&nbsp;&nbsp;
+                                                <select name="c" id="cmbStatus" class="form-control input-sm" data-fieldname="status_string" data-grid="gridAllTrans">
+                                                    <option value="" disabled selected>Select Status</option>
+                                                    <option value="Submitted">Pending</option>
+                                                    <option value="Approved">Approved</option>
+                                                    <option value="Rejected">Rejected</option>
+                                                </select>
+                                            </label>
+                                        
+                                            <label style="float:right" id="dropdownMyTransDept" hidden>
+                                                Status :&nbsp;&nbsp;
+                                                <select name="c" id="cmbStatusDept" class="form-control input-sm" data-fieldname="status_string" data-grid="gridAllTransDept">
+                                                    <option value="" disabled selected>Select Status</option>
+                                                    <option value="Submitted">Pending</option>
+                                                    <option value="Approved">Approved</option>
+                                                    <option value="Rejected">Rejected</option>
+                                                </select>
+                                            </label>
+                                       
+                                        
+                                    </div>
+
+                                                                                             
+                                    @* @version: 1.0, author: avillena, 6/5/2017, description: data grid of all gate pass transaction *@
+                                    <div class="jqxgrid jqxgrid-filterable jqxgrid-sortable jqxgrid-autoheight jqxgrid-sortable jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-columnsresize jqxgrid-toolbar"
+                                         id="gridAllTrans"
+                                         grid-width="100"
+                                         @*data-url="/Transactions/GetAllTrans"*@
+                                         data-url="/Transactions/GetAllTrans?MyDeptTrans=false"
+                                         data-method="post"
+                                         grid-selection-mode="singlerow"
+                                         grid-pagesizeoptions="5,10,20,50,100"
+                                         data-action-buttons="Details,PrintableCopy"
+                                         grid-hide-columns="0,2,4,7,8,9,12"
+                                         grid-pagermode="simple">
+
+                                    </div>
+
+                                  
+
+                                        <div class="jqxgrid jqxgrid-filterable jqxgrid-sortable jqxgrid-autoheight jqxgrid-sortable jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-columnsresize jqxgrid-toolbar"
+                                             id="gridAllTransDept"
+                                             grid-width="100"
+                                             @*data-url="/Transactions/GetAllTrans"*@
+                                             data-url="/Transactions/GetAllTransTry?MyDeptTrans=true"
+                                             data-method="post"
+                                             grid-selection-mode="singlerow"
+                                             grid-pagesizeoptions="5,10,20,50,100"
+                                             data-action-buttons="Details,PrintableCopy"
+                                             grid-hide-columns="0,2,4,7,8,9,12"
+                                             grid-pagermode="simple" hidden>
+
+                                        </div>
+
+
+                                </div>
+
+                            </div>
+
+
+
+
+                            @* @version: 1.0, author: avillena, description: data grid of all return slip transaction *@
+                            <div role="tabpanel" class="tab-pane fade" id="tab6">
+                                <div class="row">                                  
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="jqxgrid jqxgrid-filterable jqxgrid-sortable jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-columnsresize jqxgrid-toolbar"
+                                                 id="grid_returnslip"
+                                                 grid-width="100"
+                                                 data-url="/Transactions/GetAll_ReturnSlip"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-pagesizeoptions="5,10,20,50,100"
+                                                 data-action-buttons="Details,Attach File"
+                                                 grid-hide-columns="0,2,4,7,9,10,11,12"
+                                                 grid-pagermode="simple">
+
+                                            </div>
+                                        </div>
+                                    </div>         
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                @* @version: 1.0, author: avillena, description: printable copy of gate pass*@
+                <div class="panel panel-default" hidden id="hardcopypage" style="font-size:12px">
+                    <div class="panel-heading" id="hidde-print">
+                        <h3 class="panel-title" id="titleView"><i class="fa fa-file" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Printable Copy</strong></i></h3>
+                        <a class="btn btn-medium btn-green btn-custom" id="cmdBackmyTrans" title="Back to View" aria-hidden="true" style="float:right;position:relative;display:none;padding: 0.1500em 1.00em;color:white;">
+                            <i class="fa fa-long-arrow-left fa-lg"></i>
+                        </a>
+                    </div>
+                    @*<br />
+                    <p id="noteprinting" style="font-size:30px;color:lightgray" hidden>Printable copy is applicable only to <strong>Approved</strong> status. </p>*@
+                    <div class="panel-body" id="panedlbodyprint" style="border-style:solid;border-width:1px;border-color:black; border-color:#12AFCB">
+                      
+                        <br />
+                        
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img src="~/Content/template/images/AMPILOGO.jpg" alt="Unavailable Image" width="140" height="45" />
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="panel-title" style="text-align:center">Allegro MicroSystems Philippines</h5>
+                                <p style="text-align:center;font-size:12px">4756 Sampaguita St., Marimar Village, Barangay Sun Valley, Parañaque City</p>
+                                <p style="text-align:center;margin-top:-7px;font-size:12px">Tel No.: (632) 823-5000</p>
+                                <p style="text-align:center;margin-top:-10px;font-size:12px">Fax No.: (632) 842-7320</p>
+                                <h3 style="text-align:center;margin-top:-7px">Gate Pass</h3>
+                            </div>
+                        </div>
+                        <br />
+                        <h6 class="panel-title"><strong>Details</strong></h6>
+                        <br />
+                        <table style="width:100%" align="center">
+
+
+                            <tr>
+                                <td style="width:23%">Name :</td>
+                                <td>@ViewBag.Loginfullname</td>
+
+                            </tr>
+
+                            <tr>
+                                <td>Department :</td>
+                                <td>@ViewBag.department</td>
+
+                            </tr>
+                            <tr>
+                                <td>Date :</td>
+                                <td id="tdcurrentdate">@ViewBag.currentdate</td>
+
+                            </tr>
+
+                        </table>
+
+
+                        <br />
+                      
+                        <h6 class="panel-title"><strong>Gate Pass Details</strong></h6>                     
+                        <br />
+                        
+                       
+                        <table style="width:100%" align="center">
+
+
+                            <tr>
+                                <td style="width:23%">Gate Pass Id :</td>
+                                <td id="tdGPId"></td>
+                            </tr>
+
+                            <tr hidden>
+                                <td>Return Date :</td>
+                                <td id="tdreturndate"></td>
+                            </tr>
+                            <tr>
+                                <td>Purpose :</td>
+                                <td id="tdpurpose"></td>
+                            </tr>
+
+                            <tr>
+                                <td>IMPEX Ref. Number :</td>
+                                <td id="tdimpexref"></td>
+                            </tr>
+
+                            <tr>
+                                <td>Supplier Name :</td>
+                                <td id="tdsupplier"></td>
+                            </tr>
+                            <tr>
+                                <td>Supplier Address :</td>
+                                <td id="tdcontactname"></td>
+                            </tr>
+                        </table>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6" style="font-size:10px">
+                                <div class="jqxgrid jqxgrid-filterable jqxgrid-sortable jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-columnsresize jqxgrid-editable"
+                                     id="girdforpirnt"
+                                     grid-width="100"
+                                     data-url=""
+                                     grid-selection-mode="singlerow"
+                                     grid-hide-columns="0,1,2,3,4,6,10,13,14,15,16,17,18">
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <br />
+                        <br />
+                        <p id="bg-text" style="text-align:center">Gate Pass Approved Online</p>
+                        <br />
+                        <h6 class="panel-title" hidden><strong>Approvals</strong></h6>   
+                        <br />
+                        <table style="width:100%" align="center" hidden>
+
+                            <tr>
+                                <td id="tddept">-</td>
+                                <td id="tdIT">-</td>
+                               
+                            </tr>
+                            <tr>
+                                <td>________________________</td>
+                                <td>________________________</td>
+
+                            </tr>
+                            <tr>
+                                <td style="width:50%;">Department Approver :</td>
+                                <td>IT Approver</td>
+                            </tr>
+                          
+
+
+                            <tr>
+                                <td id="tdpurch">
+                                 - 
+                                </td>
+
+                                <td id="tdacc">
+                                  -  
+                                </td>
+                            
+                            </tr>
+                            <tr>
+                                <td>_______________________</td>
+                                <td>_______________________</td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Purchasing Approver</td>
+                                <td>Accounting Approver</td>
+                            
+                            
+                            </tr>
+                            <tr>
+                                <td>-</td>
+                                <td></td>
+                            </tr>
+
+                            <tr><td>________________________</td><td></td></tr>
+
+                            <tr>
+                                <td>AMPI Guard Approver</td>
+                                <td></td>
+                            </tr>
+
+                        </table>
+
+                        
+                        @*desc: button to trigger window print, author:avillena , version: 1.0*@
+                        <a id="print" class="btn btn-medium btn-green pull-right" onclick="windowprintfunction()"><i class="fa fa-print" aria-hidden="true"></i> Print this page</a>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+}
+@section JavaScript {
+
+    <script src="~/Scripts/pages/mytransaction/mytransaction.js"></script>
+    <script src="~/Scripts/pages/mytransaction/bootstrap-datetimepicker.min.js"></script>
+}

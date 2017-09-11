@@ -1,0 +1,51 @@
+// rherejias 11/23/16 for special key input on search 
+function specialKeys() {
+    var keys = ["20", "16", "17", "91", "18","13","93", "27", "112",
+            "113", "114", "115", "116", "117", "118", "119", "120", "121", "122",
+            "123", "37", "38", "39", "40", "33", "34", "35", "36", "46",
+            "45", "19", "145"];
+
+    return keys;
+}
+
+//rherejias 11/23/16 for checking of array values
+Array.prototype.contains = function (obj) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] == obj) {
+            return true;
+        }
+    }
+    return false;
+}
+
+//rherejias 11/23/16 for generalSearch
+function generalSearch(input, gridID, columns, e) {
+
+    var keyCode = e.keyCode || e.which;
+
+    var keys = specialKeys();
+    if (keys.contains(keyCode)) { }
+    else {
+        if ($('#' + gridID + '_searchField').val() == '') {
+            $('#' + gridID).jqxGrid('clearfilters');
+            $('#' + gridID).jqxGrid('updatebounddata');
+        }
+        else {
+            var filtertype = 'stringfilter';
+            var filtergroup = new $.jqx.filter();
+            var filter_or_operator = 0;
+            var filtervalue = input;
+            var filtercondition = 'contains';
+            var filter = filtergroup.createfilter(filtertype, filtervalue, filtercondition);
+            filtergroup.addfilter(1, filter);
+
+            for (var i = 0; i < columns.length; i++) {
+                $('#' + gridID).jqxGrid('addfilter', columns[i], filtergroup);
+            }
+            $('#' + gridID).jqxGrid('applyfilters');
+        }
+    }
+
+}
+

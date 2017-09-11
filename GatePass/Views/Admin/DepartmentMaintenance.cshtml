@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "DepartmentMaintenance";
+    Layout = "~/Views/Shared/template/_Layout.cshtml";
+}
+@section content {
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title" id="titleView"><i class="fa fa-pencil" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Department Maintenance</strong></i></h3>
+            <a id="cmdAddNew" class="btn btn-medium btn-green btn-custom" style="float:right; top:-8px; position:relative; color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Create New</a>
+        </div>
+
+        <div class="panel-body">
+
+            <br />
+
+            <div role="tabpanel">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#tab1" role="tab" data-toggle="tab" id="activeTab">Active</a></li>
+                    <li role="presentation"><a href="#tab2" role="tab" data-toggle="tab" id="inactiveTab">Inactive</a></li>
+
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="tab1">
+                        <div class="row">
+                            <!--desc : table list for department active-->
+                            <div class="col-md-12" id="mainGridContainer">
+                                <br />
+                                <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                     id="DepartmentMaintenanceGrid"
+                                     grid-width="100"
+                                     data-url="/DepartmentMaintenance/GetDepartmentData?IsActive=1"
+                                     data-method="post"
+                                     grid-selection-mode="singlerow"
+                                     grid-pagesizeoptions="10,20,50,100"
+                                     data-action-buttons="Edit,Inactive"
+                                     grid-hide-columns="0,1,4,5,6,7">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="tab2">
+                        <div class="row">
+                            <!--desc : table list for department inactive-->
+                            <div class="col-md-12" id="mainGridContainer">
+                                <br />
+                                <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                     id="DepartmentMaintenanceGridInactive"
+                                     grid-width="100"
+                                     data-url="/DepartmentMaintenance/GetDepartmentData?IsActive=0"
+                                     data-method="post"
+                                     grid-selection-mode="singlerow"
+                                     grid-pagesizeoptions="10,20,50,100"
+                                     data-action-buttons="Activate"
+                                     grid-hide-columns="0,1,4,5,6,7">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+           
+                </div>
+            </div>
+                  
+        </div>
+    </div>
+
+
+
+
+
+}
+@section JavaScript {
+   <script src="~/Scripts/pages/DepartmentMaintenanceJS.js"></script>
+
+}

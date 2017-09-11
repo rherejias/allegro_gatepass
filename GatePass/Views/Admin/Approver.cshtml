@@ -1,0 +1,269 @@
+﻿
+@{
+    Layout = "~/Views/Shared/template/_Layout.cshtml";
+}
+@section content {
+    <div class="row">
+        <div class="col-md-12">
+            <div role="tabpanel">
+                @* @version: 1.0, author: rherejias, description: tab for approval department, it purchasing and accounting *@
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#tab1" role="tab" data-toggle="tab">Department</a></li>
+                    <li role="presentation"><a href="#tab2" role="tab" data-toggle="tab">IT</a></li>
+                    <li role="presentation"><a href="#tab3" role="tab" data-toggle="tab">Purchasing</a></li>
+                    <li role="presentation"><a href="#tab4" role="tab" data-toggle="tab">Accounting</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="tab1">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title" id="titleView"><i class="fa fa-check" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Department Approvers</strong></i></h3>
+                                <a id="cmdAddNew" class="btn btn-medium btn-green btn-custom" style="float:right; top:-8px; position:relative; color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Create New</a>
+                            </div>
+
+                            <div class="panel-body">
+                                <br />
+                                <div role="tabpanel">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active"><a href="#tabDeptApprover" role="tab" data-toggle="tab">Active</a></li>
+                                        <li role="presentation"><a href="#tabDeptApproverInactive" role="tab" data-toggle="tab">Inactive</a></li>
+                                    </ul>
+                                </div>
+
+                                @* @version: 1.0, author: avillena, description: data grid of approver type *@
+                                <div class="tab-content" style="padding:0;">
+                                    <div role="tabpanel" class="tab-pane active fade in" id="tabDeptApprover">
+                                        <div class="row">
+                                            <div class="col-md-12" id="mainGridContainer">
+                                                <br />
+                                               
+                                                <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                     id="ApproverGrid"
+                                                     grid-width="100"
+                                                     data-url="/Approver/GetApprovers?IsActive=1&Type=@System.Configuration.ConfigurationManager.AppSettings["departmentApprover"].ToString()"
+                                                     data-method="post"
+                                                     grid-selection-mode="singlerow"
+                                                     grid-pagesizeoptions="15,20,50,100"
+                                                     grid-hide-columns="0,1,2,3,4,6,9"
+                                                     data-action-buttons="Edit,Inactive">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @* @version: 1.0, author: avillena, description: data grid for inactive approver *@
+                                    <div role="tabpanel" class="tab-pane active fade" id="tabDeptApproverInactive">
+                                        <div class="row">
+                                            <div class="col-md-12" id="mainGridContainerInactive">
+                                                <br />                                          
+                                                <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                     id="ApproverGridInactive"
+                                                     grid-width="100"
+                                                     data-url="/Approver/GetApprovers?IsActive=0&Type=@System.Configuration.ConfigurationManager.AppSettings["departmentApprover"].ToString()"
+                                                     data-method="post"
+                                                     grid-selection-mode="singlerow"
+                                                     grid-pagesizeoptions="15,20,50,100"
+                                                     grid-hide-columns="0,1,2,3,4,6,9"
+                                                     data-action-buttons="Activate">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @* @version: 1.0, author: avillena, description: tab for IT approver *@
+                    <div role="tabpanel" class="tab-pane" id="tab2">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title" id="titleView"><i class="fa fa-check" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> IT Approvers</strong></i></h3>
+                                <a id="cmdAddNewIT" class="btn btn-medium btn-green btn-custom" style="float:right; top:-8px; position:relative; color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Create New</a>
+                            </div>
+
+                            <div class="panel-body">
+                                <br />
+                                <div role="tabpanel">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active"><a href="#tabIT" role="tab" data-toggle="tab">Active</a></li>
+                                        <li role="presentation"><a href="#tabITInactive" role="tab" data-toggle="tab">Inactive</a></li>
+                                    </ul>
+                                </div>
+
+                                @* @version: 1.0, author: avillena, description: data grid for IT approver *@
+                                <div class="tab-content" style="padding:0;">
+                                    <div role="tabpanel" class="tab-pane active fade in" id="tabIT">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <br />
+                                                <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                     id="ITRelatedGrid"
+                                                     grid-width="100"
+                                                     data-url="/Approver/GetApprovers?IsActive=1&Type=@System.Configuration.ConfigurationManager.AppSettings["itApprover"].ToString()"
+                                                     data-method="post"
+                                                     grid-selection-mode="singlerow"
+                                                     grid-pagesizeoptions="15,20,50,100"
+                                                     grid-hide-columns="0,1,2,4,6,9"
+                                                     data-action-buttons="Edit,Inactive,Set_as_primary">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @* @version: 1.0, author: avillena, description: data grid for inactive IT approver *@
+                                    <div role="tabpanel" class="tab-pane active fade" id="tabITInactive">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <br />
+                                                <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                     id="ITRelatedGridInactive"
+                                                     grid-width="100"
+                                                     data-url="/Approver/GetApprovers?IsActive=0&Type=@System.Configuration.ConfigurationManager.AppSettings["itApprover"].ToString()"
+                                                     data-method="post"
+                                                     grid-selection-mode="singlerow"
+                                                     grid-pagesizeoptions="15,20,50,100"
+                                                     grid-hide-columns="0,1,2,4,6,9"
+                                                     data-action-buttons="Activate">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @* @version: 1.0, author: avillena, description: tab for purchasing approver*@
+                        <div role="tabpanel" class="tab-pane" id="tab3">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title" id="titleView"><i class="fa fa-check" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Purchasing Approvers</strong></i></h3>
+                                    <a id="cmdAddNewPurchasing" class="btn btn-medium btn-green btn-custom" style="float:right; top:-8px; position:relative; color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Create New</a>
+                                </div>
+
+                                <div class="panel-body">
+                                    <br />
+                                    <div role="tabpanel">
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <li role="presentation" class="active"><a href="#tabPurchasing" role="tab" data-toggle="tab">Active</a></li>
+                                            <li role="presentation"><a href="#tabPurchasingInactive" role="tab" data-toggle="tab">Inactive</a></li>
+                                        </ul>
+                                    </div>
+
+                                    @* @version: 1.0, author: avillena, description: data grid for purchasing approver *@
+                                    <div class="tab-content" style="padding:0;">
+                                        <div role="tabpanel" class="tab-pane active fade in" id="tabPurchasing">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <br />
+                                                    <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                         id="PurchasingGrid"
+                                                         grid-width="100"
+                                                         data-url="/Approver/GetApprovers?IsActive=1&Type=@System.Configuration.ConfigurationManager.AppSettings["purchasingApprover"].ToString()"
+                                                         data-method="post"
+                                                         grid-selection-mode="singlerow"
+                                                         grid-pagesizeoptions="15,20,50,100"
+                                                         grid-hide-columns="0,1,2,4,6,9"
+                                                         data-action-buttons="Edit,Inactive,Set_as_primary">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        @* @version: 1.0, author: avillena, description: data grid for inactive purchasing approver *@
+                                        <div role="tabpanel" class="tab-pane active fade" id="tabPurchasingInactive">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <br />
+                                                    <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                         id="PurchasingGridInactive"
+                                                         grid-width="100"
+                                                         data-url="/Approver/GetApprovers?IsActive=0&Type=@System.Configuration.ConfigurationManager.AppSettings["purchasingApprover"].ToString()"
+                                                         data-method="post"
+                                                         grid-selection-mode="singlerow"
+                                                         grid-pagesizeoptions="15,20,50,100"
+                                                         grid-hide-columns="0,1,2,4,6,9"
+                                                         data-action-buttons="Activate">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    @* @version: 1.0, author: avillena, description: tab view for accounting approver *@
+                    <div role="tabpanel" class="tab-pane" id="tab4">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title" id="titleView"><i class="fa fa-check" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Accounting Approvers</strong></i></h3>
+                                <a id="cmdAddNewAccounting" class="btn btn-medium btn-green btn-custom" style="float:right; top:-8px; position:relative; color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Create New</a>
+                            </div>
+
+                            <div class="panel-body">
+                                <br />
+                                <div role="tabpanel">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active"><a href="#tabAccounting" role="tab" data-toggle="tab">Active</a></li>
+                                        <li role="presentation"><a href="#tabAccountingInactive" role="tab" data-toggle="tab">Inactive</a></li>
+                                    </ul>
+                                </div>
+
+
+                                @* @version: 1.0, author: avillena, description: data grid for accounting apporver *@
+                                <div class="tab-content" style="padding:0;">
+                                    <div role="tabpanel" class="tab-pane active fade in" id="tabAccounting">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <br />
+                                                <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                     id="AccountingGrid"
+                                                     grid-width="100"
+                                                     data-url="/Approver/GetApprovers?IsActive=1&Type=@System.Configuration.ConfigurationManager.AppSettings["accountingApprover"].ToString()"
+                                                     data-method="post"
+                                                     grid-selection-mode="singlerow"
+                                                     grid-pagesizeoptions="15,20,50,100"
+                                                     grid-hide-columns="0,1,2,4,6,9"
+                                                     data-action-buttons="Edit,Inactive,Set_as_primary">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @* @version: 1.0, author: avillena, description: data grid for inactoive apporver *@
+                                    <div role="tabpanel" class="tab-pane active fade" id="tabAccountingInactive">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <br />
+                                                <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                     id="AccountingGridInactive"
+                                                     grid-width="100"
+                                                     data-url="/Approver/GetApprovers?IsActive=0&Type=@System.Configuration.ConfigurationManager.AppSettings["accountingApprover"].ToString()"
+                                                     data-method="post"
+                                                     grid-selection-mode="singlerow"
+                                                     grid-pagesizeoptions="15,20,50,100"
+                                                     grid-hide-columns="0,1,2,4,6,9"
+                                                     data-action-buttons="Activate">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+}
+@section JavaScript {
+
+<script src="~/Scripts/pages/Approver.js"></script>
+    
+}
+

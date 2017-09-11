@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/template/_Layout.cshtml";
+}
+@section content {
+   <div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title" id="titleView"><i class="fa fa-building" aria-hidden="true"></i> Approver Type</h3>
+                <button id="cmdAddNew" class="btn btn-success" style="float:right; top:-8px; position:relative; box-shadow:3px 3px 1px #168572;"><i class="fa fa-plus" aria-hidden="true"></i> Create New</button>
+            </div>
+            @* @version: 1.0, author: avillena, description: data grid for approver type *@
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12" id="mainGridContainer">
+                        <br />
+                        <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                             id="ApproverTypeGrid"
+                             grid-width="100"
+                             data-url="/ApproverType/GetApproverType"
+                             grid-selection-mode="singlerow"
+                             grid-pagesizeoptions="5,10,20,50,100"
+                             grid-hide-columns="0"
+                             data-action-buttons="Edit,Inactive">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@section JavaScript {
+<script src="~/Scripts/pages/ApproverType.js"></script>
+}
+
+
+
+

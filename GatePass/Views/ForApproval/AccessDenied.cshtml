@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "~/Views/Shared/template/_Layout.cshtml";
+}
+@section content{
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+
+
+<body>
+    <div class="row">       
+        <div class="col-md-12" id="accessdenied_bgcolor" style="background-color:#f98989; padding:2%">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <i class="fa fa-exclamation-triangle" id="accessdeniedIconWarning" style="font-size:110px"></i>
+                <i class="fa fa-info-circle" id="accessdeniedIconInfo" style="font-size:110px;display:none"></i>
+            </div>
+
+            @* @version: 1.0, author: avillena, description: access denied message for apporval page *@
+            <div class="col-md-10" id="div_accessdenied">
+                <label style="font-size:24px;"> ACCESS DENIED!</label>
+                <br />
+                <label>Comment:</label>
+                <br />
+                <label style="margin-bottom:-2%"> &nbsp;&nbsp;&nbsp;&nbsp; - Undefined user login.</label><br />
+            </div>
+
+
+            @* @version: 1.0, author: avillena, description: info for gate pass already transacted *@
+            <div class="col-md-10" id="div_hasTransaction" style="display:none">
+                <label style="font-size:24px;"> INFORMATION!</label>
+                <br />
+                <label>Comment:</label>
+                <br />
+                <label style="margin-bottom:-2%"> &nbsp;&nbsp;&nbsp;&nbsp; - This Gate Pass with ID Number: <strong style="font-weight:bold;color:white">@ViewBag.GatePassHeaderCode</strong> has already been transacted. </label><br />
+
+            </div>
+
+
+
+        </div>
+        
+        <input id="GPhastransaction" hidden value="@ViewBag.HasTransaction"/>
+    </div>
+</body>
+</html>
+    }
+
+@section JavaScript {
+
+<script src="~/Scripts/pages/For Approval/AccessDeniedScript.js"></script>
+}

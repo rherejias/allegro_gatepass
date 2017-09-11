@@ -1,0 +1,327 @@
+﻿
+@{
+    Layout = "~/Views/Shared/template/_Layout.cshtml";
+}
+@section content {
+<div class="row">
+    <div class="col-md-12">
+        <div role="tabpanel">
+            @* @version: 1.0, author: rherejias, description: tab view for item maintenance *@
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#tab1" role="tab" data-toggle="tab">Item Master List</a></li>
+                <li role="presentation"><a href="#tab2" role="tab" data-toggle="tab">Item Category</a></li>
+                <li role="presentation"><a href="#tab3" role="tab" data-toggle="tab">Item Type</a></li>
+                <li role="presentation"><a href="#tab4" role="tab" data-toggle="tab">Unit of Measure</a></li>
+                <li role="presentation"><a href="#tab5" role="tab" data-toggle="tab">Item Department Related</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="tab1">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="titleView"><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Item master list</strong></i></h3>
+                            <a id="btnSupplier" class="btn btn-medium btn-green btn-custom" style="float:right; top:-8px; position:relative; color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Create New</a>
+                        </div>
+                        <div class="panel-body">
+                            <br />
+                            <div role="tabpanel">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#tabMaster" role="tab" data-toggle="tab">Active</a></li>
+                                    <li role="presentation"><a href="#tabMasterInactive" role="tab" data-toggle="tab">Inactive</a></li>
+                                </ul>
+                            </div>
+
+                            @* @version: 1.0, author: rherejias, description: data grid of item list *@
+                            <div class="tab-content" style="padding:0;">
+                                <div role="tabpanel" class="tab-pane active fade in" id="tabMaster">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                 id="ItemGrid"
+                                                 grid-width="100"
+                                                 data-url="/Items/GetItems?IsActive=1"
+                                                 data-method="post"
+                                                 grid-pagesizeoptions="10,20,50,100"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-hide-columns="0,7,8,9,10,11,12,13"
+                                                 data-action-buttons="Edit,Inactive"
+                                                 data-statusbar-buttons="Export to Excel">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                @* @version: 1.0, author: rherejias, description: data grid of item inactive *@
+                                <div role="tabpanel" class="tab-pane fade" id="tabMasterInactive">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                 id="ItemGridInactive"
+                                                 grid-width="100"
+                                                 data-url="/Items/GetItems?IsActive=0"
+                                                 data-method="post"
+                                                 grid-pagesizeoptions="10,20,50,100"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-hide-columns="0,7,8,9,10,11,12,13"
+                                                 data-action-buttons="Activate"
+                                                 data-statusbar-buttons="Export to Excel">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @* @version: 1.0, author: rherejias, description: tab view of category *@
+                <div role="tabpanel" class="tab-pane" id="tab2">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="titleView"><i class="fa fa-sitemap" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Category</strong></i></h3>
+                            <a id="btnCategory" class="btn btn-medium btn-green btn-custom" style="float:right; top:-8px; position:relative; color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Create New</a>
+                        </div>
+                        <div class="panel-body">
+                            <br />
+                            <div role="tabpanel">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#tabCategory" role="tab" data-toggle="tab">Active</a></li>
+                                    <li role="presentation"><a href="#tabCategoryInactive" role="tab" data-toggle="tab">Inactive</a></li>
+                                </ul>
+                            </div>
+
+                            @* @version: 1.0, author: rherejias, description: data grid of category list *@
+                              <div class="tab-content" style="padding:0;">
+                                    <div role="tabpanel" class="tab-pane active fade in" id="tabCategory">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <br />
+                                                <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                     id="CategoryGrid"
+                                                     grid-width="100"
+                                                     data-url="/Items/GetItemCategories?IsActive=1"
+                                                     grid-pagesizeoptions="10,20,50,100"
+                                                     grid-selection-mode="singlerow"
+                                                     grid-hide-columns="0,1,4"
+                                                     data-action-buttons="Edit,Inactive"
+                                                     data-statusbar-buttons="Export to Excel">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                  @* @version: 1.0, author: rherejias, description: data grid of category list inactive *@
+                                    <div role="tabpanel" class="tab-pane fade" id="tabCategoryInactive">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <br />
+                                                <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                     id="CategoryGridInactive"
+                                                     grid-width="100"
+                                                     data-url="/Items/GetItemCategories1?IsActive=0"
+                                                     grid-pagesizeoptions="10,20,50,100"
+                                                     grid-selection-mode="singlerow"
+                                                     grid-hide-columns="0,1,4"
+                                                     data-action-buttons="Activate"
+                                                     data-statusbar-buttons="Export to Excel">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                @* @version: 1.0, author: rherejias, description: tab view for type *@
+                <div role="tabpanel" class="tab-pane" id="tab3">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="titleView"><i class="fa fa-th-large" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Type</strong></i></h3>
+                            <a id="btnType" class="btn btn-medium btn-green btn-custom" style="float:right; top:-8px; position:relative; color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Create New</a>
+                        </div>
+                        <div class="panel-body">
+                            <br />
+                            <div role="tabpanel">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#tabType" role="tab" data-toggle="tab">Active</a></li>
+                                    <li role="presentation"><a href="#tabTypeInactive" role="tab" data-toggle="tab">Inactive</a></li>
+                                </ul>
+                            </div>
+
+                            @* @version: 1.0, author: rherejias, description: data grid for type list *@
+                            <div class="tab-content" style="padding:0;">
+                                <div role="tabpanel" class="tab-pane active fade in" id="tabType">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                 id="TypeGrid"
+                                                 grid-width="100"
+                                                 data-url="/Items/GetItemTypes?IsActive=1"
+                                                 grid-pagesizeoptions="10,20,50,100"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-hide-columns="0,1,4"
+                                                 data-action-buttons="Edit,Inactive"
+                                                 data-statusbar-buttons="Export to Excel">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @* @version: 1.0, author: rherejias, description: data grid for type list inactive*@
+                                <div role="tabpanel" class="tab-pane fade" id="tabTypeInactive">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                 id="TypeGridInactive"
+                                                 grid-width="100"
+                                                 data-url="/Items/GetItemTypes?IsActive=0"
+                                                 grid-pagesizeoptions="10,20,50,100"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-hide-columns="0,1,4"
+                                                 data-action-buttons="Activate"
+                                                 data-statusbar-buttons="Export to Excel">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                @* @version: 1.0, author: rherejias, description: tab view of unit of measure *@
+                <div role="tabpanel" class="tab-pane" id="tab4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="titleView"><i class="fa fa-pie-chart" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Unit of Measure</strong></i></h3>
+                            <a id="btnMeasure" class="btn btn-medium btn-green btn-custom" style="float:right; top:-8px; position:relative; color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Create New</a>
+                        </div>
+                        <div class="panel-body">
+                            <br />
+                            <div role="tabpanel">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#tabUOM" role="tab" data-toggle="tab">Active</a></li>
+                                    <li role="presentation"><a href="#tabUOMInactive" role="tab" data-toggle="tab">Inactive</a></li>
+                                </ul>
+                            </div>
+                            <div class="tab-content" style="padding:0;">
+                                <div role="tabpanel" class="tab-pane active fade in" id="tabUOM">
+
+                                    @* @version: 1.0, author: rherejias, description: data grid for unit of meausure list *@
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                 id="MeasureGrid"
+                                                 grid-width="100"
+                                                 data-url="/Items/GetUnitOfMeasures?IsActive=1"
+                                                 grid-pagesizeoptions="10,20,50,100"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-hide-columns="0,1,4"
+                                                 data-action-buttons="Edit,Inactive"
+                                                 data-statusbar-buttons="Export to Excel">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="tabUOMInactive">
+                                    <div class="row">
+                                        @* @version: 1.0, author: rherejias, description: data grid for unit of measuer list inactive *@
+                                        <div class="col-md-12">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                 id="MeasureGridInactive"
+                                                 grid-width="100"
+                                                 data-url="/Items/GetUnitOfMeasures?IsActive=0"
+                                                 grid-pagesizeoptions="10,20,50,100"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-hide-columns="0,1,4"
+                                                 data-action-buttons="Activate"
+                                                 data-statusbar-buttons="Export to Excel">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                               
+                        </div>
+                    </div>
+                </div>
+
+                @* @version: 1.0, author: rherejias, description: tab view of department related *@
+                <div role="tabpanel" class="tab-pane" id="tab5">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="titleView"><i class="fa fa-institution" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Department</strong></i></h3>
+                            <a id="btnDept" class="btn btn-medium btn-green btn-custom" style="float:right; top:-8px; position:relative; color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Create New</a>
+                        </div>
+                        <div class="panel-body">
+                            <br />
+                            <div role="tabpanel">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#tabDept" role="tab" data-toggle="tab">Active</a></li>
+                                    <li role="presentation"><a href="#tabDeptInactive" role="tab" data-toggle="tab">Inactive</a></li>
+                                </ul>
+                            </div>
+
+                            @* @version: 1.0, author: rherejias, description: data grid for department related list *@
+                            <div class="tab-content" style="padding:0;">
+                                <div role="tabpanel" class="tab-pane active fade in" id="tabDept">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                 id="DepartmentGrid"
+                                                 grid-width="100"
+                                                 data-url="/Items/GetItemDepartment?IsActive=1"
+                                                 grid-pagesizeoptions="10,20,50,100"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-hide-columns="0,1,4"
+                                                 data-action-buttons="Edit,Inactive"
+                                                 data-statusbar-buttons="Export to Excel">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @* @version: 1.0, author: rherejias, description: data grid for department related list inactive *@
+                                <div role="tabpanel" class="tab-pane fade" id="tabDeptInactive">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <br />
+                                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                                 id="DepartmentGridInactive"
+                                                 grid-width="100"
+                                                 data-url="/Items/GetItemDepartment?IsActive=0"
+                                                 grid-pagesizeoptions="10,20,50,100"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-hide-columns="0,1,4"
+                                                 data-action-buttons="Activate"
+                                                 data-statusbar-buttons="Export to Excel">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+@section JavaScript {
+<script src="~/Scripts/pages/Items.js"></script>
+}

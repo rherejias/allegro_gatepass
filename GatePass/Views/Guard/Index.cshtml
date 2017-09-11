@@ -1,0 +1,99 @@
+﻿
+@{
+  
+    Layout = "~/Views/Shared/template/_Layout.cshtml";
+}
+@section content {
+
+<link href="~/Scripts/template/plugins/toastr/toastr.min.css" rel="stylesheet" />
+
+
+
+
+<div class="panel panel-info">
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h3 class="panel-title" id="titleView"><i class="fa fa-clipboard" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Transaction Records</strong></i></h3></div>
+                    <div class="panel-body" style="border-style:solid;border-width:1px;border-color:black; border-color:#12AFCB">
+                        <br />
+                        @* @version: 1.0, author: avillena, description: tab for gate pass transaction and return slip *@
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#tab5" role="tab" data-toggle="tab">Gate Pass Transactions</a></li>
+                            <li role="presentation"><a href="#tab6" role="tab" data-toggle="tab">Return Slip Transactions</a></li>
+                        </ul>
+
+
+                        @* @version: 1.0, author: avillena, description: list of for guard approval gate pass transaction *@
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active fade in" id="tab5">
+                                <div class="row">
+                                        <div class="row" id="bodyViewTrans">
+
+                                            <div class="col-md-12">
+
+                                                <div class="jqxgrid jqxgrid-filterable jqxgrid-sortable jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-columnsresize jqxgrid-toolbar"
+                                                     id="gridAllTransGuard"
+                                                     grid-width="100"
+                                                     data-url="/Guard/GetAllTransGuard"
+                                                     data-method="post"
+                                                     grid-selection-mode="singlerow"
+                                                     grid-pagesizeoptions="10,20,50,100"
+                                                     data-action-buttons="Details"
+                                                     grid-hide-columns="0,2,4,7,8,9"
+                                                     grid-pagermode="simple">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                </div>
+                            </div>
+
+                            @* @version: 1.0, author: avillena, description: list of transaction of return slip into data grid*@
+                            <div role="tabpanel" class="tab-pane fade" id="tab6">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="jqxgrid jqxgrid-filterable jqxgrid-sortable jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-columnsresize jqxgrid-toolbar"
+                                                 id="grid_returnslip"
+                                                 grid-width="100"
+                                                 data-url="/Guard/GetAll_ReturnSlip"
+                                                 data-method="post"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-pagesizeoptions="10,20,50,100"
+                                                 data-action-buttons="Item_Details"
+                                                 grid-hide-columns="0,2,4,7,9,10,11,12"
+                                                 grid-pagermode="simple">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+}
+
+@section JavaScript {
+    
+   
+<script src="~/Scripts/pages/guard/guardScript.js"></script>
+<script src="~/Scripts/pages/mytransaction/bootstrap-datetimepicker.min.js"></script>
+<script src="~/Scripts/template/js/pages/notifications.js"></script>
+}
+
+

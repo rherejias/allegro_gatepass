@@ -1,0 +1,180 @@
+﻿
+@{
+    Layout = "~/Views/Shared/template/_Layout.cshtml";
+}
+@section content {
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-white">
+                <div class="panel-body">
+                    @* @version: 1.0, author: avillena, description: header title page *@
+                    <div class="panel panel-info">
+                        <div class="panel-heading" style="padding-top: 20px; overflow: hidden;">
+                            <h3 class="panel-title" id="titleView"><i class="fa fa-clock-o" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> For Approval</strong></i></h3>
+                            <a class="btn btn-medium btn-green btn-custom" id="cmdForApprovalBack" title="Back" aria-hidden="true" style="float:right;position:relative;display:none;padding: 0.1500em 1.00em;color:white;">
+                                <i class="fa fa-long-arrow-left fa-lg"></i>
+                            </a>
+                        </div>
+
+                        <div class="panel-body" style="border-style:solid;border-width:1px;border-color:black; border-color:#12AFCB">
+                            <br />
+                            <div class="row" id="bodygridForApproval">
+                                <div class="col-md-12">
+                                    @* @version: 1.0, author: avillena, description: list of for approval of department into data grid *@
+                                    <div class="jqxgrid jqxgrid-filterable jqxgrid-sortable jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-columnsresize jqxgrid-toolbar"
+                                         id="gridForApproval"
+                                         grid-width="100"
+                                         data-url="/ForApproval/GetAllTransForApproval"
+                                         grid-selection-mode="singlerow"
+                                         grid-pagesizeoptions="5,10,20,50,100"
+                                         data-action-buttons="Details"
+                                         grid-hide-columns="0,2,4,7,8,9,10,12"
+                                         grid-pagermode="simple">
+                                    </div>
+                                </div>
+                            </div>
+
+                            @* @version: 1.0, author: avillena, description: hidden parameters to get status and file upload *@
+                            <input type="text" class="form-control" id="viewbagstatus" style="background-color:transparent; display:none" readonly="readonly" value="@ViewBag.Fromlink">
+                            <input type="text" class="form-control" id="viewbaguploadedfile" style="background-color:transparent; display:none" readonly="readonly" value="@ViewBag.Attachement">
+
+
+
+                            @* @version: 1.0, author: avillena, description: gate pass details *@
+                            <div class="col-md-12" id="bodyForApprovalDetails" style="display:none">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="form-group col-md-4">
+                                                <label for="txtGatePassID">Gate Pass Id:<span class="asterisc" style="color:red;font-size:12px">*</span></label>
+                                                <input type="text" class="form-control" id="txtGatePassIDforApproval" style="background-color:transparent" readonly="readonly" value="@ViewBag.HeaderCode">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="cmbTransType">Transaction Type:<span class="asterisc" style="color:red;font-size:12px">*</span></label>
+                                                <input type="text" class="form-control" id="cmbTransTypeforApproval" style="background-color:transparent" readonly="readonly" value="@ViewBag.TransType">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="txtReturnDate">Return Date:<span class="asterisc" style="color:red;font-size:12px">*</span></label>
+                                                <div class="input-group input-append date form_datetime">
+                                                    <input id="txtReturnDateforApproval" type="text" class="form-control" style="background-color:transparent" readonly value="@ViewBag.ReturnDate" />
+                                                    <span class="input-group-addon add-on" style="border-radius: 0px">
+                                                        <i class="fa fa-calendar faa-tada animated-hover"
+                                                           style="color:gray">
+                                                        </i>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <label for="txtPurpose">Purpose:<span class="asterisc" style="color:red;font-size:12px">*</span></label>
+                                                <textarea type="text" style="resize:none; background-color:transparent" readonly="readonly" rows="2" cols="50" class="form-control" id="txtPurposeforApproval" placeholder="Purpose">@ViewBag.Purpose</textarea>
+                                            </div>
+
+                                            <div class="form-group col-md-4">
+                                                <label for="txtImpexRefNbr">IMPEX Ref. Number:</label>
+                                                <input type="text" class="form-control" id="txtImpexRefNbrforApproval" style="background-color:transparent" readonly="readonly" value="@ViewBag.impexNumber">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="cmdSupplier">Supplier:<span class="asterisc" style="color:red;font-size:12px">*</span></label>
+                                                    <input type="text" class="form-control" id="cmbSupplierforApproval" style="background-color:transparent" readonly="readonly" value="@ViewBag.Supplier">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="txtReturnDate">Contact Person:</label>
+                                                    <input type="text" class="form-control" id="cmdAddContactforApproval" style="background-color:transparent" readonly="readonly" value="@ViewBag.ContactName">                                                  
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="col-md-3">
+                                        <label for="cmbTransType">Uploaded File:</label>
+                                        <div class="list-group">
+
+                                            <a class="list-group-item" id="file" onclick="DownloadAttachment()" title="Download">
+                                                <label id="currentFile" class="text-success" style="cursor:pointer; font-weight:bold; font-size:12px; font-family: segoe ui;"></label>
+                                            </a>
+                                        </div>
+                                    </div>*@
+
+                                    @*placed of gate pass owner*@
+                                    <div class="col-md-3">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <label for="cmbTransType">Uploaded File:</label>
+                                                <div class="list-group" style="height:29px">
+                                                    <a class="list-group-item" id="file" onclick="DownloadAttachment()" title="Download">
+                                                        <label id="currentFile" class="text-success" style="cursor:pointer; font-weight:bold; font-size:12px; font-family: segoe ui;"></label>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label for="txtrequestedby">Requested by:</label>
+                                                <input type="text" class="form-control" id="txtrequestedby" style="background-color:transparent" readonly="readonly">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <br /><br />
+                                <div class="row">
+                                    @* @version: 1.0, author: avillena, description: gate pass item details into data grid *@
+                                    <div class="col-md-12">
+                                        <div id="detailsContainer">
+                                            <div class="jqxgrid jqxgrid-filterable jqxgrid-sortable jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-custom"
+                                                 id="gridForApprovalDetails"
+                                                 grid-width="100"
+                                                 data-url="/Transactions/GetTransDetails"
+                                                 grid-selection-mode="singlerow"
+                                                 grid-pagesizeoptions="5,10,20,50,100"
+                                                 grid-rowsheight="60"
+                                                 grid-hide-columns="0,1,2,3,4,6,10,14,15,16,19,20"
+                                                 grid-pagermode="simple">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @* @version: 1.0, author: avillena, description: function button for approved and rejected *@
+                                <div class="row" style="text-align: right;">
+                                    <hr style="border-color:#12AFCB" />
+                                    <div class="col-md-12">
+                                        <a id="btnGPApproved" class="btn btn-medium btn-blue"><i class="fa fa-check" aria-hidden="true"></i> Approve</a>
+                                        <a id="btnGPReject" class="btn btn-medium btn-red"><i class="fa fa-times" aria-hidden="true"></i> Reject</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+}
+@section JavaScript {
+
+    @*<script src="~/Scripts/pages/For Approval/ForApprovalScript.js"></script>*@
+<script src="~/Scripts/pages/For Approval/DepartmentApprovalScript.js"></script>
+
+}
+
+

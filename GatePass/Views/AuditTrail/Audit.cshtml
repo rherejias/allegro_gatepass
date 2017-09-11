@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/template/_Layout.cshtml";
+}
+@section content {
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title" id="titleView"><i class="fa fa-check" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Audit Trail</strong></i></h3>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12" id="mainGridContainer">
+                        <br />
+
+                        @* @version: 1.0, author: rherejias, description: data grid of audit trail, list of transactions *@
+                        <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                             id="AuditTrailGrid"
+                             grid-width="100"
+                             data-url="/AuditTrail/GetAuditTrail"
+                             data-method="post"
+                             grid-selection-mode="singlerow"
+                             grid-hide-columns="6,7,8,9,10"
+                             grid-pagesizeoptions="20,50,100"
+                             grid-pagermode="simple">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@section JavaScript {
+<script src="~/Scripts/pages/AuditTrail.js"></script>
+}
+
+

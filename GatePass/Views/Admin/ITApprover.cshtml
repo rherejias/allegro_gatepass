@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/Shared/template/_Layout.cshtml";
+}
+@section content {
+ <div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title" id="titleView"><i class="fa fa-laptop" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> IT Approver</strong></i></h3>
+            </div>
+
+            @* @version: 1.0, author: avillena, description: data grid for IT approver *@
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12" id="mainGridContainer">
+                        <br />
+                        <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                             id="ITApproverGrid"
+                             grid-width="100"
+                             data-url="/ITPurchasing/GetITPurchasingApprovers?ApproverType=IT"
+                             data-method="post"
+                             grid-selection-mode="singlerow"
+                             grid-pagesizeoptions="5,10,20,50,100"
+                             grid-hide-columns="0,1,2,4,6,9"
+                             data-action-buttons="Assign">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@section JavaScript {
+<script src="~/Scripts/pages/ITPurchasing.js"></script>
+}

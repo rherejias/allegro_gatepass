@@ -1,0 +1,77 @@
+﻿
+@{
+    Layout = "~/Views/Shared/template/_Layout.cshtml";
+
+}
+@section content {
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info">
+
+                @* @version: 1.0, author: rherejias, description: tab view of supplier *@
+                <div class="panel-heading">
+                    <h3 class="panel-title" id="titleView"><i class="fa fa-building" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Supplier Company</strong></i></h3>
+                    <a id="cmdAddNew" class="btn btn-medium btn-green btn-custom" style="float:right; top:-8px; position:relative; color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Create New</a>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12" id="mainGridContainer">
+                            <br/>
+
+                            @* @version: 1.0, author: rherejias, description: data grid of supplier list *@
+                            <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                 id="SupplierGrid"
+                                 grid-width="100"
+                                 data-url="/Supplier/GetSuppliers"
+                                 data-method="post"
+                                 grid-selection-mode="singlerow"
+                                 grid-pagesizeoptions="5,10,20,50,100"
+                                 grid-child="ContactPersonGrid"
+                                 grid-hide-columns="0,1,11,12,13"
+                                 data-action-buttons="Edit,Inactive"
+                                 data-statusbar-buttons="Export to Excel,Upload Excel File,Clear Filter">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @* @version: 1.0, author: rherejias, description: tab view of contact person of supplier *@
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title" id="titleView"><i class="fa fa-user" aria-hidden="true" style="font-size:16px;"><strong style="font-family:segoe ui;"> Contact Person</strong></i></h3>
+                    <a id="cmdAddContact" class="btn btn-medium btn-green btn-custom" style="float:right; top:-8px; position:relative; display:none; color:white;"><i class="fa fa-plus" aria-hidden="true"></i> Create New</a>
+               </div>
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <br />
+                                @* @version: 1.0, author: rherejias, description: data grid of contact person of supplier list *@
+                                <div class="jqxgrid jqxgrid-autoheight jqxgrid-enablehover jqxgrid-enableellipsis jqxgrid-pageable jqxgrid-virtualmode jqxgrid-pagesizeoptions jqxgrid-showstatusbar jqxgrid-toolbar jqxgrid-columnsresize"
+                                     id="ContactPersonGrid"
+                                     grid-width="100"
+                                     data-url="/ContactPerson/GetSuppliers"
+                                     data-method="post"
+                                     grid-pagesizeoptions="5,10,20,50,100"
+                                     grid-selection-mode="singlerow"
+                                     grid-hide-columns="0,1,2,9,10"
+                                     data-action-buttons="Edit,Inactive"
+                                     data-statusbar-buttons="Export to Excel">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+}
+@section JavaScript {
+    <script src="~/Scripts/pages/Maintenance.js"></script>
+}
